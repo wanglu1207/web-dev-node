@@ -1,8 +1,8 @@
-const dao = require("../who/who-model");
+const dao = require("../who/who-dao");
 
 module.exports = (app) => {
     const findAllWho = (req, res) =>
         dao.findAllWho()
-            then(who => res.json(who));
+            .then(who => res.json(who));
     app.get("/rest/who", findAllWho);
 }
