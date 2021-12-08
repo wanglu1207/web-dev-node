@@ -5,7 +5,6 @@ let movies = [
 ];
 
 module.exports = (app) => {
-
     const deleteMovie = (req, res) => {
         const id = req.params['mid'];
         movies = movies.filter(m => m._id !== id);
@@ -31,7 +30,5 @@ module.exports = (app) => {
     app.delete('/api/movies/:mid', deleteMovie);
     app.put('/api/movies/:mid', saveMovie);
     app.get('/api/movies', getAllMovies);
-
     app.post('/api/movies', createMovie);
-
 };

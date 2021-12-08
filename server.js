@@ -1,7 +1,22 @@
-// const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost:27017/webdev');
+// const express=require('express');
+// const app=express();
+// const mongoose=require('mongoose')
+// const dotenv=require('dotenv');
+// const routesUrls=require('./project/route');
+// const cors=require('cors');
+// dotenv.config();
+// mongoose.connect(process.env.DATABASE_ACCESS,()=>console.log("database connected"));
 //
-// mongoose.connection.on('connected', ()=>console.log('connected') )
+// app.use(express.json());
+// app.use(cors());
+// app.use('/app',routesUrls);
+// app.listen(4000,()=>console.log("server is up and running"));
+
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/webdev');
+
+mongoose.connection.on('connected', ()=>console.log('connected') )
 const express = require('express');
 const app = express();
 
@@ -33,9 +48,11 @@ require('./service/tweeter-service')(app);
 
 require('./service/profile-service')(app);
 
-// require('./movies/service')(app);
+require('./service/who-service')(app);
 
-app.listen(4000);
+require('./movies/service')(app);
+
+app.listen(process.env.PORT || 4000);
 
 
 
